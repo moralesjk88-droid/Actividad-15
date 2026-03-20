@@ -142,7 +142,31 @@ do
             break;
             case 6:
             Console.WriteLine("Registro de venta");
+            Console.Write("Codigo producto:_ ");
+            int CodigoRegis=int.Parse(Console.ReadLine());
+            if (inventario.ContainsKey(CodigoRegis))
+            {
+                Producto registrar = inventario[CodigoRegis];
+                Console.Write("Cantidad a vender:_ ");
+                int venta = int.Parse(Console.ReadLine());
+                if (registrar.cantidadExistencia < venta)
+                {
+                    Console.WriteLine("Cantidad insuficiente");
+                    break;
+                }
+                if (registrar.cantidadExistencia > venta)
+                {
+                    inventario[venta].cantidadExistencia-=venta;
+                    double Realizado = 0;
+                    Realizado* inventario[venta].precio;
+                       
+                }
 
+            }
+            else
+            {
+                Console.WriteLine("Codigo no encontrado");
+            }
             break;
         case 7:
             break;
