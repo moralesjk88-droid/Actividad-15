@@ -24,7 +24,7 @@ do
     {
         case 1:
             Console.WriteLine("Agregar producto");
-            Console.Write("Cuantos Productos desea ingresar");
+            Console.Write("Cuantos Productos desea ingresar:_ ");
             int n = int.Parse(Console.ReadLine());
             for (int i = 0; i < n; i++)
             {
@@ -61,38 +61,61 @@ do
             break;
         case 2:
             Console.WriteLine("Modificar Producto");
-           
+
             Console.Write("Codigo a modificar:_");
-           
-            int CodiogoModificar=int.Parse(Console.ReadLine());
+
+            int CodiogoModificar = int.Parse(Console.ReadLine());
             if (inventario.ContainsKey(CodiogoModificar))
             {
-                Producto modificar= inventario[CodiogoModificar];
+                Producto modificar = inventario[CodiogoModificar];
                 Console.Write("Nombre:_");
                 modificar.nombre = Console.ReadLine();
                 Console.Write("Precio:_ ");
                 modificar.precio = double.Parse(Console.ReadLine());
                 Console.Write("Cantidad:_");
-                modificar.cantidadExistencia= int.Parse(Console.ReadLine());
+                modificar.cantidadExistencia = int.Parse(Console.ReadLine());
                 if (modificar.precio < 0 || modificar.cantidadExistencia < 0)
                 {
                     Console.WriteLine(" No puede ser menor a cero");
                     break;
-                    
+
                 }
                 Console.WriteLine("Producto Modificado con exito");
                 Console.ReadKey();
             }
-            
+
             else
             {
                 Console.WriteLine("El producto no exite");
                 Console.ReadKey();
             }
             break;
-                case 3:
+        case 3:
+            Console.WriteLine("Eliminar Producto");
+            Console.Write("Codigo del producto a eliminar");
+            int eliminar = int.Parse(Console.ReadLine());
+            if (inventario.ContainsKey(eliminar))
+            {
+                inventario.Remove(eliminar);
+                Console.WriteLine("Producto ELiminado");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Producto no encontrado");
+                Console.ReadKey();
+            }
             break;
             case 4:
+            Console.WriteLine("Buscar Producto");
+            Console.Write("Codigo del producto:_");
+            int BuscarCodigo=int.Parse(Console.ReadLine());
+            if (inventario.ContainsKey(BuscarCodigo))
+            {
+                Producto buscar=inventario[BuscarCodigo];
+                Console.WriteLine("Producto encontrado");
+                inventario[BuscarCodigo]. MostrarDatos();
+            }
             break;
             case 5:
             break;
