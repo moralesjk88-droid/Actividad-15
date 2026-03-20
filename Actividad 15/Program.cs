@@ -25,13 +25,13 @@ do
         case 1:
             Console.WriteLine("Agregar producto");
             Console.Write("Cuantos Productos desea ingresar");
-            int n=int.Parse(Console.ReadLine());
+            int n = int.Parse(Console.ReadLine());
             for (int i = 0; i < n; i++)
             {
                 Producto e = new Producto();
                 Console.WriteLine($"\n Producto {i + 1} ");
                 Console.Write("Codigo del Producto:_ ");
-                e.codigo=int.Parse(Console.ReadLine());
+                e.codigo = int.Parse(Console.ReadLine());
                 if (inventario.ContainsKey(e.codigo))
                 {
                     Console.WriteLine("Codigo ya existente");
@@ -42,23 +42,53 @@ do
                     Console.Write("Nombre del producto:_ ");
                     e.nombre = Console.ReadLine();
                     Console.Write("Precio:_");
-                    e.precio=double.Parse(Console.ReadLine());
+                    e.precio = double.Parse(Console.ReadLine());
                     Console.Write("Cantidad:_ ");
-                    e.cantidadExistencia=int.Parse(Console.ReadLine());
-                    
+                    e.cantidadExistencia = int.Parse(Console.ReadLine());
+
                 }
-                if (e.precio<=0|| e.cantidadExistencia<=0)
+                if (e.precio < 0 || e.cantidadExistencia < 0)
                 {
-                        Console.WriteLine(" No puede ser menor a cero");
+                    Console.WriteLine(" No puede ser menor a cero");
                     break;
-               
+
                 }
-                inventario.Add(e.codigo,e);
-               
+                inventario.Add(e.codigo, e);
+                Console.ReadKey();
+
             }
 
             break;
-            case 2:
+        case 2:
+            Console.WriteLine("Modificar Producto");
+           
+            Console.Write("Codigo a modificar:_");
+           
+            int CodiogoModificar=int.Parse(Console.ReadLine());
+            if (inventario.ContainsKey(CodiogoModificar))
+            {
+                Producto modificar= inventario[CodiogoModificar];
+                Console.Write("Nombre:_");
+                modificar.nombre = Console.ReadLine();
+                Console.Write("Precio:_ ");
+                modificar.precio = double.Parse(Console.ReadLine());
+                Console.Write("Cantidad:_");
+                modificar.cantidadExistencia= int.Parse(Console.ReadLine());
+                if (modificar.precio < 0 || modificar.cantidadExistencia < 0)
+                {
+                    Console.WriteLine(" No puede ser menor a cero");
+                    break;
+                    
+                }
+                Console.WriteLine("Producto Modificado con exito");
+                Console.ReadKey();
+            }
+            
+            else
+            {
+                Console.WriteLine("El producto no exite");
+                Console.ReadKey();
+            }
             break;
                 case 3:
             break;
