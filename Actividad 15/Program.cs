@@ -115,11 +115,34 @@ do
                 Producto buscar=inventario[BuscarCodigo];
                 Console.WriteLine("Producto encontrado");
                 inventario[BuscarCodigo]. MostrarDatos();
+                Console.ReadKey() ;
+            }
+            else
+            {
+                Console.WriteLine("Codigo no encontrado");
             }
             break;
             case 5:
+            Console.WriteLine("Todos los Productos Regisrtados");
+            if (inventario.Count==0)
+            {
+                Console.WriteLine("No se ha encontradoproductos");
+                Console.ReadKey();
+            }
+            else
+            {
+                foreach (var item in inventario)
+            {
+                    Console.WriteLine("\nInventario");
+                    item.Value.MostrarDatos();
+                    Console.ReadKey();
+                 }
+            }
+            
             break;
             case 6:
+            Console.WriteLine("Registro de venta");
+
             break;
         case 7:
             break;
@@ -161,7 +184,7 @@ public class Producto
         Console.WriteLine($"Codigo:_ {codigo}");
         Console.WriteLine($" Nombre:_ {nombre}");
         Console.WriteLine($"Precio:_ {precio:F2}");
-        Console.WriteLine($"Cantidad Exixtencia:_ {cantidadExistencia}");
+        Console.WriteLine($"Cantidad Existencia:_ {cantidadExistencia}");
       
     }
 
